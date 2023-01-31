@@ -1,4 +1,5 @@
 import express from 'express'
+import getOeisFactors from './js/getOeisFactors.js';
 import getOeisValues from './js/getOeisValues.js'
 
 const app = express()
@@ -9,6 +10,8 @@ app.get( '/', ( req, res ) => {
 } )
 
 app.get( '/api/get_oeis_values/:oeis_id?/:num_elements?', getOeisValues )
+
+app.get( '/api/get_oeis_factors/:oeis_id?/:num_elements?', getOeisFactors )
 
 app.listen( PORT, () => {
   console.log( 'retroscope started' )
