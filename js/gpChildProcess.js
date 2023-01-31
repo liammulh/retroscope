@@ -1,6 +1,11 @@
 import { exec } from 'node:child_process'
 import { spawn } from 'node:child_process'
 
+// TODO: Use async/await syntax for exec?
+// TODO: See https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback.
+// Something like:
+// const exec = util.promisify(require('node:child_process').exec)
+
 // Check to see if we have the gp binary on our path.
 exec( 'which gp', ( error, stdout, stderr ) => {
   if ( error || stderr ) {
@@ -10,6 +15,9 @@ exec( 'which gp', ( error, stdout, stderr ) => {
     console.log( `gp binary detected at: ${stdout.trim()}` )
   }
 } )
+
+// TODO: We should also ensure the unbuffer binary is on our path.
+// TODO: We should write a module for checking to see if a binary is on our path.
 
 // Spawn an instance of gp with the quiet flag. Ask gp to factor 10.
 // For more info on why we're using unbuffer, see
