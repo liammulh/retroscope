@@ -23,14 +23,5 @@ exec( 'which gp', ( error, stdout, stderr ) => {
 // For more info on why we're using unbuffer, see
 // https://github.com/liammulh/retroscope/issues/4#issuecomment-1410968644.
 const gpChildProcess = spawn( 'unbuffer', [ '-p', 'gp', '-q' ] )
-gpChildProcess.stdin.write( 'factor(10)\n' )
 
-gpChildProcess.stdout.on( 'data', data => {
-  console.log( `stdout: ${data}` )
-} )
-gpChildProcess.stderr.on( 'data', data => {
-  console.error( `stderr: ${data}` )
-} )
-gpChildProcess.on( 'close', code => {
-  console.log( `gp child process exited with code: ${code}` )
-} )
+export default gpChildProcess
