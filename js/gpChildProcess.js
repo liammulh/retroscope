@@ -11,11 +11,11 @@ exec( 'which gp', ( error, stdout, stderr ) => {
   }
 } )
 
-// Spawn an instance of gp with the quiet flag.
-// Ask gp to factor 10.
-const gpChildProcess = spawn( 'gp', [ '-q' ] )
-gpChildProcess.stdin.write( 'factor(10)' )
-gpChildProcess.stdin.end()
+// Spawn an instance of gp with the quiet flag. Ask gp to factor 10.
+// For more info on why we're using unbuffer, see
+// https://github.com/liammulh/retroscope/issues/4#issuecomment-1410968644.
+const gpChildProcess = spawn( 'unbuffer', [ '-p', 'gp', '-q' ] )
+gpChildProcess.stdin.write( 'factor(10)\n' )
 
 gpChildProcess.stdout.on( 'data', data => {
   console.log( `stdout: ${data}` )
