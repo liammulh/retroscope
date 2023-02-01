@@ -1,8 +1,8 @@
 # retroscope
 
-This was an experiment to see if it was (A) feasible and (B)
-reasonable to rewrite [Numberscope's](https://numberscope.colorado.edu)
-back end in Node.
+This was an experiment to see if it was reasonable to
+rewrite [Numberscope's](https://numberscope.colorado.edu) back
+end in Node.
 
 What I tried to do was spawn a `gp` child process and send
 commands to `gp`. (`gp` is
